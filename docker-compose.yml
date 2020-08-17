@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+
+    node:
+        build:
+            context: './.docker/node'
+        stdin_open: 'true'
+        tty: 'true'
+        user: 'node'
+        working_dir: '/app'
+        volumes:
+            - './:/app'

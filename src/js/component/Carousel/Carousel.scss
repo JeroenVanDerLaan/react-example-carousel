@@ -1,0 +1,22 @@
+@import "src/scss/mixin/flex-box";
+
+.carousel {
+    @include flex-box(column, flex-start, flex-start, nowrap);
+    width: 100%;
+    overflow: hidden;
+
+    &__container {
+        @include flex-box(row, flex-start, stretch, nowrap);
+        width: 100%;
+        transition-property: left;
+        transition-duration: 1s;
+        transition-timing-function: ease-in-out;
+        transition-delay: 0s;
+
+        &__item {
+            @include flex-box(row, flex-start, stretch, nowrap);
+            flex-shrink: 0;
+            width: 100%;
+        }
+    }
+}

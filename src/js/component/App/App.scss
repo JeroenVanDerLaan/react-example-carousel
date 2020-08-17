@@ -1,0 +1,13 @@
+@import "src/scss/mixin/flex-box";
+
+.app {
+    @include flex-box(column, flex-start, flex-start, nowrap);
+    width: 100%;
+    padding-top: 200px;
+    padding-left: 30%;
+    padding-right: 30%;
+
+    > .bullet-list {
+        margin-top: 30px;
+    }
+}

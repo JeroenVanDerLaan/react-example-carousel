@@ -1,0 +1,10 @@
+@mixin flex-box($direction: row, $justify: flex-start, $align: center, $wrap: nowrap) {
+    position: relative;
+	box-sizing: border-box;
+    display: flex;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    justify-content: $justify;
+    align-items: $align;
+    align-content: stretch;
+}

@@ -1,0 +1,40 @@
+{
+    "name": "react-example-carousel",
+    "author": "Jeroen van der Laan",
+    "description": "A simple ReactJS carousel example",
+    "keywords": ["react", "carousel", "example"],
+    "homepage": "https://www.github.com/jeroenvanderlaan/react-example-carousel",
+    "license": "ISC",
+    "version": "1.0.0",
+    "main": "webpack.config.js",
+    "production": false,
+    "private": false,
+    "engines": {
+        "node": ">=14"
+    },
+    "scripts": {
+
+    },
+    "dependencies": {
+
+    },
+    "devDependencies": {
+        "@types/node": "^14.0.27",
+        "@types/react": "^16.9.46",
+        "@types/react-dom": "^16.9.8",
+        "css-loader": "^4.2.1",
+        "node-sass": "^4.14.1",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "sass-loader": "^9.0.3",
+        "style-loader": "^1.2.1",
+        "ts-loader": "^8.0.2",
+        "typescript": "^3.9.7",
+        "webpack": "^4.44.1",
+        "webpack-cli": "^3.3.12"
+    },
+    "peerDependencies": {
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1"
+    }
+}
