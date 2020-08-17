@@ -1,11 +1,10 @@
 import "./Carousel.scss"
 import * as React from 'react';
-import useCarouselTransition from "../../hook/CarouselTransition";
+import useCarouselTransition, {CarouselTransition} from "../../hook/CarouselTransition";
+import {NonEmptyArray} from "../../utility/NonEmptyArray";
 import UniqueKey from "../../utility/UniqueKey";
 
-export type CarouselItems = {
-    0: React.ReactNode
-} & Array<React.ReactNode>;
+export type CarouselItems = NonEmptyArray<React.ReactNode>;
 
 export interface CarouselProps
 {
@@ -15,8 +14,8 @@ export interface CarouselProps
 
 const Carousel: React.FunctionComponent<CarouselProps> = props =>
 {
-    const index = props.index ? props.index : 0;
-    const transition = useCarouselTransition(props.items.length, 0);
+    const index: number = props.index ? props.index : 0;
+    const transition: CarouselTransition = useCarouselTransition(props.items.length, 0);
 
     React.useLayoutEffect(() => {
         transition.slideTo(index);
@@ -37,7 +36,10 @@ const Carousel: React.FunctionComponent<CarouselProps> = props =>
     }
 
     return <aside className="carousel">
-        <div className="carousel__container" style={transition.style}>
+        <div
+            className="carousel__container"
+            style={transition.style}
+        >
             {renderItems()}
         </div>
     </aside>

@@ -12,8 +12,8 @@ export interface BulletListProps
 
 const BulletList: React.FunctionComponent<BulletListProps> = props =>
 {
-    const bulletCount = Math.abs(props.bulletCount);
-    const currentIndex = NumberRange.clamp(0, bulletCount - 1, props.currentIndex);
+    const bulletCount: number = Math.abs(props.bulletCount);
+    const currentIndex: number = NumberRange.clamp(0, bulletCount - 1, props.currentIndex);
 
     function renderBullets(): JSX.Element[]
     {
@@ -39,9 +39,7 @@ const BulletList: React.FunctionComponent<BulletListProps> = props =>
             }}
         />
     }
-
-
-
+    
     return <ol className="bullet-list">
         {renderBullets()}
     </ol>
