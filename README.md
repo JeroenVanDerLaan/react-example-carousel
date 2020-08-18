@@ -2,44 +2,54 @@
 
 A simple React carousel example. 
 
-## Install
+## Deployment
 
 ```shell script
-git clone git@github.com:JeroenVanDerLaan/react-example-carousel.git react-example-carousel &&
-cd react-example-carousel &&
-docker-compose up -d --build &&
-docker-compose exec node sh -c 'yarn install' &&
-docker-compose exec node sh -c 'yarn webpack --mode="production" --devtool=false'
+docker-compose up -d --build && docker-compose exec node sh -c 'yarn deploy'
 ```
 
-Open `index.html` in a browser of choice to view the example.
+This builds the __production__ `dist` assets.
+
+Open `index.html` in your browser to load the app.
+
+## Development
+
+```shell script
+docker-compose up -d --build && docker-compose exec node sh -c 'yarn develop'
+```
+
+This build the __development__ `dist` assets,
+while also telling `webpack` to keep watching for changes made to the `src` files.
+
+Open `index.html` in your browser to load the app.
 
 ## Usage
 
-Use the `Carousel` component, passing the items it manages, and the index of the currently visible item.
+The `Carousel` component takes an array of items to manage,
+and the index value of the currently visible item.
 
 ```tsx
 <Carousel
     // Provide the carousel items
     items={['foo', 'bar', 'baz', 'qux']}
-    // Specify the index of the currently visible carousel item
+    // Specify the index of the currently visible item
     index={0}
 />
 ```
 
-A higher level component should be responsible for managing the state of the `Carousel`
-by passing the appropriate item index.
+Have a higher level component manage the state of the currently visible item.
 
 ```tsx
+// Define state to manage the current item index value
 const [index, setIndex] = React.useState<number>(0);
 
-<Carousel
-    items={['foo', 'bar', 'baz', 'qux']}
-    // Pass the appropriate (stateful) index value
-    index={index}
-/>
-
-// Example means of manipulating the respective state
+// Provide means to manipulate the item index value
 <button onClick={() => setIndex(index - 1)}>Previous</button>
 <button onClick={() => setIndex(index + 1)}>Next</button>
+
+// Pass the stateful item index value to the Carousel component
+<Carousel
+    items={['foo', 'bar', 'baz', 'qux']}
+    index={index}
+/>
 ```

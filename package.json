@@ -13,7 +13,8 @@
         "node": ">=14"
     },
     "scripts": {
-
+        "deploy": "yarn install && yarn webpack --mode=production --devtool=false",
+        "develop": "yarn install && yarn webpack --watch"
     },
     "dependencies": {
 
