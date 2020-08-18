@@ -28,7 +28,7 @@ const BulletList: React.FunctionComponent<BulletListProps> = props =>
 
     function renderBullet(index: number): JSX.Element
     {
-        return <span
+        return <li
             className="bullet-list__bullet"
             key={UniqueKey.generate()}
             style={{
