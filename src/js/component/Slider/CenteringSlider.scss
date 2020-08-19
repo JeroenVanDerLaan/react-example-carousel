@@ -1,0 +1,20 @@
+@import "src/scss/mixin/flex-box";
+
+.centering-slider {
+    @include flex-box(row, flex-start, center, nowrap);
+    width: 100%;
+    overflow: hidden;
+
+    &__slider {
+        @include flex-box(row, flex-start, center, nowrap);
+        list-style: none;
+        left: 0;
+        transition: left 0.4s ease-in-out;
+
+        &__child {
+
+        }
+
+    }
+
+}

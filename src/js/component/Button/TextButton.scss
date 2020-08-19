@@ -1,0 +1,15 @@
+@import "src/scss/mixin/flex-box";
+
+.text-button {
+    @include flex-box(row, center, center, nowrap);
+    display: inline-flex !important;
+    padding: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+    color: currentColor;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+        color: orange;
+    }
+}
