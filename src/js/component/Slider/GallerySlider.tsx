@@ -1,21 +1,21 @@
-import "./Carousel.scss"
+import "./GallerySlider.scss"
 import * as React from 'react';
-import useCarouselTransition, {CarouselTransition} from "../../hook/CarouselTransition";
+import useCarouselTransition, {GallerySliderTransition} from "../../hook/GallerySliderTransition";
 import {NonEmptyArray} from "../../utility/NonEmptyArray";
 import UniqueKey from "../../utility/UniqueKey";
 
-export type CarouselItems = NonEmptyArray<React.ReactNode>;
+export type GallerySliderItems = NonEmptyArray<React.ReactNode>;
 
-export interface CarouselProps
+export interface GallerySliderProps
 {
-    items: CarouselItems;
+    items: GallerySliderItems;
     index?: number;
 }
 
-const Carousel: React.FunctionComponent<CarouselProps> = props =>
+const GallerySlider: React.FunctionComponent<GallerySliderProps> = props =>
 {
     const index: number = props.index ? props.index : 0;
-    const transition: CarouselTransition = useCarouselTransition(props.items.length, 0);
+    const transition: GallerySliderTransition = useCarouselTransition(props.items.length, 0);
 
     React.useLayoutEffect(() => {
         transition.slideTo(index);
@@ -26,8 +26,8 @@ const Carousel: React.FunctionComponent<CarouselProps> = props =>
         const items: JSX.Element[] = [];
         props.items.forEach((item: React.ReactNode) => {
             items.push(<div
-                className="carousel__container__item"
-                key={'carousel-item-' + UniqueKey.generate()}
+                className="gallery-slider__container__item"
+                key={'gallery-slider-item-' + UniqueKey.generate()}
             >
                 {item}
             </div>);
@@ -35,9 +35,9 @@ const Carousel: React.FunctionComponent<CarouselProps> = props =>
         return items;
     }
 
-    return <aside className="carousel">
+    return <aside className="gallery-slider">
         <div
-            className="carousel__container"
+            className="gallery-slider__container"
             style={transition.style}
         >
             {renderItems()}
@@ -45,4 +45,4 @@ const Carousel: React.FunctionComponent<CarouselProps> = props =>
     </aside>
 }
 
-export default Carousel;
+export default GallerySlider;

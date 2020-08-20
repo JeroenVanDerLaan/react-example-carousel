@@ -1,29 +1,39 @@
 import './CenteringSlider.scss';
 import * as React from 'react';
+import NumberRange from "../../utility/NumberRange";
 import UniqueKey from "../../utility/UniqueKey";
 
 export interface CenteringSliderProps
 {
-
+    index: number;
 }
 
 const CenteringSlider: React.FunctionComponent<CenteringSliderProps> = props =>
 {
     const [sliderLeftPosition, setSliderLeftPosition] = React.useState<number>(0);
-    const children = React.Children.map<React.ReactNode, React.ReactNode>(props.children, renderChild);
+    const itemRefs: React.MutableRefObject<HTMLLIElement>[] = [];
 
-    function renderChild(child: React.ReactChild): React.ReactNode
+    React.useLayoutEffect(() => {
+        const index = NumberRange.clamp(0, itemRefs.length - 1, props.index);
+        const item = itemRefs[index].current;
+        const position = calculateSliderPositionX(item);
+        setSliderLeftPosition(position);
+    }, [props.index]);
+
+    function renderChildren(): React.ReactNode
     {
-        return <li
-            className="centering-slider__slider__item"
-            key={UniqueKey.generate()}
-            onClick={(event: React.MouseEvent<HTMLSpanElement>) => {
-                const newSliderLeftPosition = calculateSliderPositionX(event.currentTarget);
-                setSliderLeftPosition(newSliderLeftPosition);
-            }}
-        >
-            {child}
-        </li>
+        const children: React.ReactNode[] = []
+        React.Children.forEach<React.ReactNode>(props.children, (child: React.ReactNode, index: number) => {
+            itemRefs[index] = React.useRef<HTMLLIElement>(document.createElement('li'));
+            children.push(<li
+                className="centering-slider__slider__item"
+                key={UniqueKey.generate()}
+                ref={itemRefs[index]}
+            >
+                {child}
+            </li>);
+        });
+        return children;
     }
 
     return <div className="centering-slider">
@@ -33,7 +43,7 @@ const CenteringSlider: React.FunctionComponent<CenteringSliderProps> = props =>
                 left: sliderLeftPosition + 'px'
             }}
         >
-            {children}
+            {renderChildren()}
         </ol>
     </div>
 }

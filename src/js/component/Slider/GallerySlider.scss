@@ -1,6 +1,6 @@
-@import "src/scss/mixin/flex-box";
+@import "../../../scss/mixin/flex-box";
 
-.carousel {
+.gallery-slider {
     @include flex-box(column, flex-start, flex-start, nowrap);
     width: 100%;
     overflow: hidden;

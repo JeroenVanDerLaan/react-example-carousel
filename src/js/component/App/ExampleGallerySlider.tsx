@@ -1,6 +1,6 @@
 import * as React from 'react';
 import UniqueKey from "../../utility/UniqueKey";
-import Carousel, {CarouselItems} from "../Carousel/Carousel";
+import GallerySlider, {GallerySliderItems} from "../Slider/GallerySlider";
 import BulletList from "../Navigation/BulletList";
 
 export interface ExampleCarouselProps
@@ -8,7 +8,7 @@ export interface ExampleCarouselProps
 
 }
 
-const ExampleCarousel: React.FunctionComponent<ExampleCarouselProps> = props =>
+const ExampleGallerySlider: React.FunctionComponent<ExampleCarouselProps> = props =>
 {
     const [index, setIndex] = React.useState<number>(0);
 
@@ -26,7 +26,6 @@ const ExampleCarousel: React.FunctionComponent<ExampleCarouselProps> = props =>
         const images: React.ReactNode[] = [];
         imageUrls.forEach((url: string) => {
             images.push(<div
-                className="example-carousel-item"
                 key={UniqueKey.generate()}
                 style={{
                     width: '100%',
@@ -42,8 +41,8 @@ const ExampleCarousel: React.FunctionComponent<ExampleCarouselProps> = props =>
     }
 
     return <>
-        <Carousel
-            items={renderImages() as CarouselItems}
+        <GallerySlider
+            items={renderImages() as GallerySliderItems}
             index={index}
         />
         <BulletList
@@ -54,4 +53,4 @@ const ExampleCarousel: React.FunctionComponent<ExampleCarouselProps> = props =>
     </>
 }
 
-export default ExampleCarousel;
+export default ExampleGallerySlider;

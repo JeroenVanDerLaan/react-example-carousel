@@ -16,7 +16,7 @@ const ExampleCenterSlider: React.FunctionComponent<ExampleCenterSliderProps> = p
     {
         const labels: string[] = [];
         let i = 1;
-        while (i < 30) {
+        while (i < 50) {
             labels.push('Item ' + i);
             i++;
         }
@@ -38,7 +38,7 @@ const ExampleCenterSlider: React.FunctionComponent<ExampleCenterSliderProps> = p
     }
 
     return <>
-        <CenteringSlider>
+        <CenteringSlider index={currentIndex}>
             {renderButtons()}
         </CenteringSlider>
     </>
